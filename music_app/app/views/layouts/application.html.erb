@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <h6>
+    <% if current_user && logged_in?(current_user)%>
+      <a href= <%= SessionsController/destroy %> >Click Here to Log Out</a>
+    <% else %>
+      <a href= <%= new_session_url %> >Click Here to Log In</a>
+    <% end %>
+
+  </h1>
+  <% if flash[:errors] %>
+    <ul>
+    <% flash[:errors].each do |error|%>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
